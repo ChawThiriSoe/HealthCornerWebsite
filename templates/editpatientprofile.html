@@ -1,0 +1,55 @@
+{% extends 'index.html' %}
+{% block content %}
+<div class="container-fluid">
+        <center><h3>Update Profle</h3></center>
+		<div class="col-md-2"></div>
+		<div class="col-md-8">
+		<!-- Start of insert medi info form -->
+		<form action="/editpatientprofile:{{patientdata.pid}}" method="post" enctype="multipart/form-data">
+    		<label for="name">Name: </label>
+    		<input class="insert" type="text" id="pname" name="pname" value="{{patientdata.pname}}">
+
+    		<label for="Gender">Gender: </label><br>
+    		 <div class="form-check form-check-inline">
+		      <input class="form-check-input" type="radio" name="pgender" id="inlineRadio1" value="Male" required>
+		      <label class="form-check-label" for="inlineRadio1" style="color: black;">Male</label>
+		     </div>
+		    <div class="form-check form-check-inline">
+		      <input class="form-check-input" type="radio" name="pgender" id="inlineRadio2" value="Female">
+		      <label class="form-check-label" for="inlineRadio2" style="color: black;">Female</label>
+		    </div>
+		    <div class="form-check form-check-inline">
+		      <input class="form-check-input" type="radio" name="pgender" id="inlineRadio2" value="Other">
+		      <label class="form-check-label" for="inlineRadio2" style="color: black;">Other</label>
+		    </div><br><br>
+		    <input type="hidden" name="gen" value="{{patientdata.pgender}}">
+
+		    <label for="Email">Email: </label>
+    		<input class="insert" type="text" id="pemail" name="pemail" value="{{patientdata.pemail}}">
+
+    		<label for="Address">Address: </label>
+    		<input class="insert" type="text" id="paddress" name="paddress" value="{{patientdata.paddr}}">
+
+    		<label for="Phone">Phone: </label>
+    		<input class="insert" type="text" id="pphone" name="pphone" value="{{patientdata.pphone}}">
+
+    		<label for="Phone">Health Info: </label>
+    		<textarea class="insert" id="healthinfo" name="healthinfo" cols="20" rows="5">{{patientdata.healthinfo}}</textarea>
+
+    		<input type="file" name="image" id="file1" style="display: none;">
+			<label for="file1" style="cursor: pointer; color: #232324;"><i class="fas fa-images" style="font-size:25px"></i>&nbsp;&nbsp;Change Profile Image </label><br><br>
+
+    		<input type="submit" class="insert" value="UPLOAD" style="background-color: #D7E02A; color: #232324">
+    		<input type="reset" class="insert" value="CANCEL" style="background-color: #D7E02A; color: #232324">
+  		</form>
+		<!-- End of insert medi info form -->
+		</div>
+		<div class="col-md-2"></div>
+	</div><br>
+	<script>
+	var loadFile1 = function(event) {
+		var image = document.getElementById('output');
+		image.src = URL.createObjectURL(event.target.files[0]);
+	};
+	</script>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends 'adminmedicallist.html' %}
+{% block content %}
+	<br>
+	<div class="container-fluid">
+		<div class="row">
+		<div class="col-md-8"></div>
+		<div class="col-md-2">
+			<a href="/insertadmininfo"><button class="adminview">Insert Admin Info</button></a> 
+		</div>
+		<div class="col-md-2">
+			<a href="/adminlist"><button class="adminview">View Admin Info</button></a> 
+		</div>
+		
+		</div>
+		<div class="row">
+			<div class="col-md-3"></div>
+			<div class="col-md-7">
+				<h2 style="color: #F64857">Add Admin Information</h2>
+			</div>
+			<div class="col-md-2"></div>
+		</div>
+		<div class="row">
+			<div class="col-md-4"></div>
+			<div class="col-md-4">
+			<!-- Start of insert admin info form -->
+			<form action="/insertadmininfo" method="POST">
+	    		<label for="adminname">Admin Name:  </label>
+	    		{% if a == True %}<input class="insert" type="text" id="adminname" name="aname" value="{{aname}}" required>{% endif %}
+	    		{% if not a == True %}<input class="insert" type="text" id="adminname" name="aname" placeholder="Enter name..." required>{% endif %}
+
+	    		<label for="adminphone">Admin Phone:  </label>
+	    		{% if a == True %}<input class="insert" type="text" id="adminphone" name="aphone" value="{{aphone}}" required>{% endif %}
+	    		{% if not a == True %}<input class="insert" type="text" id="adminphone" name="aphone" placeholder="Enter phone..." required>{% endif %}
+
+	    		<label for="adminemail">Admin Email:  </label>
+	    		{% if a == True %}<input class="insert" type="email" id="adminemail" name="aemail" value="{{aemail}}" required>{% endif %}
+	    		{% if not a == True %}<input class="insert" type="email" id="adminemail" name="aemail" placeholder="Enter email..." required>{% endif %}
+
+	    		<label for="adminpassword">Admin Password:  </label>
+	    		<input class="insert" type="password" id="adminpassword" name="apwd" placeholder="Password must be at least 8words with 1 uppercase, 1 lowercase, 1 digit, 1 special(eg.!@#$%)" required>
+
+
+	    		<input class="insert" type="submit" value="ADD">
+	    		<input class="insert" type="reset" value="CANCEL">
+	  		</form>
+			<!-- End of insert admin info form -->
+			</div>
+			<div class="col-md-4"></div>
+		</div>
+	</div><br>
+{% endblock %}

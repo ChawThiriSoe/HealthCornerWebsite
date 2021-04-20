@@ -1,0 +1,42 @@
+{% extends 'adminmedicallist.html' %}
+{% block content %}
+<div class="container-fluid"><br>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-6"><h3>Update Disease Information</h3></div>
+            <div class="col-md-2">
+              <a href="/admininsertdiseaseinfo"><button class="adminview">Insert Disease Info</button></a> 
+            </div>
+            <div class="col-md-2">
+              <a href="/admindiseaselist"><button class="adminview">View Disease Info</button></a> 
+            </div>
+       </div>
+		<div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+            <!-- Start of insert medi info form -->
+            <form action="/adminupdatediseaseinfo:{{did}}" method="post">
+                <label for="disease_name">Disease name: </label>
+                <input class="insert" type="text" id="disease_name" name="disease_name" placeholder="name" value="{{disinfo.disname}}">
+
+                <label for="disease_des">Description: </label>
+                <textarea class="insert" id="disease_des" name="disease_des" placeholder="{{disinfo.disdescription}}" style="height:200px">{{disinfo.disdescription}}</textarea>
+                <input type="hidden" name="hdisease_des" value="{{disinfo.disdescription}}">
+
+                <label for="disease_sym">Symptoms: </label>
+                <textarea class="insert" id="disease_sym" name="disease_sym" placeholder="{{disinfo.dissymptoms}}" style="height:200px">{{disinfo.dissymptoms}}</textarea>
+                <input type="hidden" name="hdisease_sym" value="{{disinfo.dissymptoms}}">
+
+                <label for="disease_treat">Treatment: </label>
+                <textarea class="insert" id="disease_treat" name="disease_treat" placeholder="{{disinfo.treatment}}" style="height:200px">{{disinfo.treatment}}</textarea>
+                <input type="hidden" name="hdisease_treat" value="{{disinfo.dissymptoms}}">
+                
+                <input type="submit" class="insert" value="UPLOAD" style="background-color: #D7E02A; color: #232324">
+                <input type="reset" class="insert" value="CANCEL" style="background-color: #D7E02A; color: #232324">
+            </form>
+            <!-- End of insert medi info form -->
+            </div>
+        <div class="col-md-2"></div>
+        </div>
+	</div><br>
+{% endblock %}

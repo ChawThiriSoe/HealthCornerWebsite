@@ -1,0 +1,80 @@
+
+{%   extends 'index.html' %}
+{% block content %}
+<br>
+	<!-- start of - body -->
+	<div class="container">
+		
+
+		
+			
+				<font size="6px" color="#F64857">Contact Health Corner</font>
+			<br> 
+			
+				<p>
+					There are many ways for you to get in touch with us, whatever you need.<br><br> 
+
+					If you want to ask us, you can mail to us by using below form. 
+				</p>
+
+			
+				<font size="6px" color="#F64857">Language Line</font>
+			<br> 
+				
+				<p>
+					If English isn’t your first or preferred language you can still use our service. We use an interpretation service called Language Line, to support callers who can’t or prefer not to speak English. Language Line is free to use. 
+				</p>
+			
+				<font size="6px" color="#F64857">How to use this service</font>
+		<br> 
+				
+				<h4>To use Language Line: </h4><br> 
+				<p>
+					1.Phone 0979 958 6616 <br><br> 
+
+					2.Tell the call handler that you need an interpreter. <br><br> 
+
+					3.Tell the call handler the name of your preferred language. <br><br> 
+
+					Once you're connected to an interpreter, you'll have a three-way conversation with the call handler to get the answer you need. 
+				</p>
+			
+			
+		
+
+			<div class="row">
+			
+				<section class="section2 clearfix">
+
+					<div class="col2 column2 last">
+
+						<div class="sec2contactform">
+							<h3 class="sec2frmtitle" align="center">Contact Us</h3>
+							<form action='/contact' method='POST'>
+								<div class="clearfix">
+									<input class="col2 first" type="text" name="fname" placeholder="Name" required style="color: black;">
+									
+								</div>
+								<div class="clearfix">
+									<input  class="col2 first" type="Email" name="email" placeholder="Email" required style="color: black;">
+								</div>
+								<div class="clearfix">
+									<textarea id="" cols="30" name="message" rows="7" placeholder="You can ask everythings...." required style="color: black;"></textarea>
+								</div>
+								<div class="clearfix"><input type="submit" name="send" value="Send"></div>
+								
+							</form>
+						</div>
+
+					</div>
+				</section>
+			
+			</div>
+
+	</div>
+</body>
+  
+     	</div>
+	<!-- end of - body -->
+
+{% endblock %}

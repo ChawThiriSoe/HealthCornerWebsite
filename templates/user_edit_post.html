@@ -1,0 +1,34 @@
+{% extends 'index.html' %}
+{% block content %}
+	<div class="container-fluid">
+		<div class="row">
+	    <div class="col-md-2"></div>
+	    <div class="col-md-6"><h2>User Update Blog</h2></div>
+	    <div class="col-md-2"></div>
+	    <div class="col-md-2">
+	    		<form action="/userdelblog:{{blog.blogid}}" method="post">
+		        <button class="btn btn-danger"  onclick="if (!confirm('Are you sure?')) { return false }" style="float: right;margin-top: 10px">Delete</button>
+		      	</form>
+		</div>
+	   </div>
+		<div class="row">
+			<div class="col-md-2"></div>
+			<div class="col-md-8">
+			<!-- Start of insert medi info form -->
+			<form action="/usereditblog:{{blog.blogid}}" method="post">
+	    		<label for="post_title">Title: </label>
+	    		<input class="insert" type="text" id="blog_title" name="blog_title" value="{{blog.blogtitle}}">
+
+	    		<label for="post_info">Your Information: </label>
+	    		<textarea class="insert" id="blog_info" name="blog_info" placeholder="{{blog.bloginfo}}" style="height:200px">{{blog.bloginfo}}</textarea>
+	    		<input type="hidden" name="hblog_info" value="{{blog.bloginfo}}">
+
+	    		<input class="insert" type="submit" value="DONE" style="background-color: #D7E02A; color: #232324">
+	    		<input class="insert" type="reset" value="CANCEL" style="background-color: #D7E02A; color: #232324">
+	  		</form>
+			<!-- End of insert medi info form -->
+			</div>
+			<div class="col-md-2"></div>
+		</div>
+	</div><br>
+{% endblock %}

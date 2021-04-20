@@ -1,0 +1,16 @@
+{% extends 'index.html' %}
+{% block content %}
+<br>
+<div class="card" style="background-color: #91DEE0">
+  <img src="{{session['image']}}" alt="" style="width:100%"><br>
+  <p><span style="font-weight: bold">Name&nbsp;:</span>&nbsp;{{doctor.dname}}</p>
+  <p><span style="font-weight: bold">Specialist&nbsp;:</span>&nbsp;{{doctor.speciality}}</p>
+  <p><span style="font-weight: bold">Hospital Name&nbsp;:</span>&nbsp;{{doctor.hospitalname}}</p>
+  <p><span style="font-weight: bold">ID&nbsp;:</span>&nbsp;{{doctor.did}}</p>
+  <p><span style="font-weight: bold">Gender&nbsp;:</span>&nbsp;{{doctor.dgender}}</p>
+  <p><span style="font-weight: bold">Email&nbsp;:</span>&nbsp;{{doctor.demail}}</p>
+  <p><span style="font-weight: bold">Address&nbsp;:</span>&nbsp;{{doctor.daddr}}</p>
+  <p><span style="font-weight: bold">Phone&nbsp;:</span>&nbsp;{{doctor.dphone}}</p>
+  <p><a href="/editdocprofile:{{doctor.did}}" class="profile"><button class="profile" style="background-color: #D7E02A;">Edit</button></a></p>
+</div><br>
+{% endblock %}

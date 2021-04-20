@@ -1,0 +1,36 @@
+{% extends 'adminmedicallist.html' %}
+{% block content %}
+	
+	<div class="container-fluid"><br>
+		<div class="row">
+			<div class="col-md-4"></div>
+			<div class="col-md-4"><center><h2>Manage Doctor Info</h2></center></div>
+			<div class="col-md-4"></div>
+		</div><br>
+		{% for doctor in d %}
+		<hr>
+		<div class="row">
+			<div class="col-md-2"></div>
+			<div class="col-md-3">
+			<img src="{{doctor.dimg}}" style="width: 100%; height: 300px; border-radius: 10px;">
+			</div>
+			<div class="col-md-4" class="info">
+			<h3> {{doctor.dname}}</h3>
+			<p> {{doctor.did}}</p>
+			<p> {{doctor.dgender}}</p>
+			<p> {{doctor.dphone}}</p>
+			<p> {{doctor.demail}}</p>
+			<p> {{doctor.daddr}}</p>
+			<p> {{doctor.hospitalname}}</p>
+			<p> {{doctor.speciality}}</p>
+			</div>
+			<div class="col-md-1">
+			<form action="/deletedoctorinfo:{{doctor.did}}" method="post">
+		        <button class="btn btn-danger"  onclick="if (!confirm('Are you sure?')) { return false }">Delete</button>
+		      </form>
+			</div>
+			<div class="col-md-2"></div>
+		</div><hr><br>
+		{% endfor %}
+	</div><br>
+{% endblock %}

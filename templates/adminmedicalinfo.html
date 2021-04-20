@@ -1,0 +1,35 @@
+{% extends 'adminmedicallist.html' %}
+{% block content %}
+<div class="container-fluid"><br>
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-6"></div>
+    <div class="col-md-2">
+      <a href="/admininsertmedicalinfo"><button class="adminview">Insert Medical Info</button></a> 
+    </div>
+    <div class="col-md-2">
+      <a href="/adminmedicallist"><button class="adminview">View Medical Info</button></a> 
+    </div>
+   </div>
+   <hr>
+   <div class="row" style="margin-left: 20px;">
+    <div class="col-md-12">
+      <h3><span style="color: #F64857">{{title}}</span></h3>
+    <p>{{mediinfo.medicalinfo}}</p>
+    </div>
+   </div>
+   <div class="row">
+   <div class="col-md-8"></div>
+    <div class="col-md-2">
+       <button class="btn btn-primary" style="margin-left: 150px;"><a href="/adminupdatemedicalinfo:{{mid}}" style="text-decoration: none;color: white;">Edit</a></button>
+    </div>
+    <div class="col-md-2">
+        <form action="/adminmedicaldel:{{mid}}" method="post">
+        <button class="btn btn-danger"  onclick="if (!confirm('Are you sure?')) { return false }">Delete</button>
+      </form>
+    </div>
+   </div>
+   <hr>
+<br></div>
+
+{% endblock %}

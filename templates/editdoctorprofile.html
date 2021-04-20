@@ -1,0 +1,58 @@
+{% extends 'index.html' %}
+{% block content %}
+<div class="container-fluid">
+        <center><h3>Update Profle</h3></center>
+		<div class="col-md-2"></div>
+		<div class="col-md-8">
+		<!-- Start of insert medi info form -->
+		<form action="/editdocprofile:{{doctorinfo.did}}" method="post" enctype="multipart/form-data">
+    		<label for="name">Name: </label>
+    		<input class="insert" type="text" id="docname" name="dname" value="{{doctorinfo.dname}}">
+
+    		<label for="specilist">Specilist: </label>
+    		<input class="insert" type="text" id="specilist" name="specilist" value="{{doctorinfo.speciality}}">
+
+    		<label for="Hospital name">Hospital name: </label>
+    		<input class="insert" type="text" id="hospitalname" name="hospitalname" value="{{doctorinfo.hospitalname}}">
+
+    		<label for="Gender">Gender: </label><br>
+    		 <div class="form-check form-check-inline">
+		      <input class="form-check-input" type="radio" name="dgender" id="dgender" value="Male" required>
+		      <label class="form-check-label" for="inlineRadio1" style="color: black;">Male</label>
+		    </div>
+		    <div class="form-check form-check-inline">
+		      <input class="form-check-input" type="radio" name="dgender" id="dgender" value="Female">
+		      <label class="form-check-label" for="inlineRadio2" style="color: black;">Female</label>
+		    </div>
+		    <div class="form-check form-check-inline">
+		      <input class="form-check-input" type="radio" name="dgender" id="dgender" value="Other">
+		      <label class="form-check-label" for="inlineRadio2" style="color: black;">Other</label>
+		    </div><br><br>
+
+
+		    <label for="Email">Email: </label>
+    		<input class="insert" type="text" id="docemail" name="demail" value="{{doctorinfo.demail}}">
+
+    		<label for="Address">Address: </label>
+    		<input class="insert" type="text" id="docaddress" name="daddress" value="{{doctorinfo.daddr}}">
+
+    		<label for="Phone">Phone: </label>
+    		<input class="insert" type="text" id="docphone" name="dphone" value="{{doctorinfo.dphone}}">
+
+    		<input type="file" name="image" id="file1" style="display: none;">
+			<label for="file1" style="cursor: pointer; color: #232324;"><i class="fas fa-images" style="font-size:25px"></i>&nbsp;&nbsp;Images </label>
+
+    		<input type="submit" class="insert" value="UPLOAD" style="background-color: #D7E02A; color: #232324">
+    		<input type="reset" class="insert" value="CANCEL" style="background-color: #D7E02A; color: #232324">
+  		</form>
+		<!-- End of insert medi info form -->
+		</div>
+		<div class="col-md-2"></div>
+	</div><br>
+	<script>
+	var loadFile1 = function(event) {
+		var image = document.getElementById('output');
+		image.src = URL.createObjectURL(event.target.files[0]);
+	};
+	</script>
+{% endblock %}

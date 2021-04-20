@@ -1,0 +1,113 @@
+{% extends 'adminmedicallist.html' %}
+{% block content %}
+<div class="container-fluid"><br>
+   <div class="row">
+    <div class="col-md-2"></div>
+      <div class="col-md-6"><h2>Manage Blog Info</h2></div>
+    <div class="col-md-4"></div>
+    </div>
+   <!-- this will be change when coding back end -->
+   {%for blog in blog_database%}
+   {% if blog.pid%}
+   <hr>
+   <div class="row" style="margin-left: 20px;">
+    <div class="col-md-11">
+      <h4>{%for patient in patients%}{% if patient.pid == blog.pid %}{{patient.pname}}{% endif %}{% endfor %}</h4>
+      <h4>{{blog.blogtitle}}</h4>
+      <p>{{blog.bloginfo}}</p>
+      <h4>{{blog.blogdate}}</h4>
+    </div>
+    <div class="col-md-1">
+       <form action="/admindeleteblog:{{blog.blogid}}" method="post">
+        <button class="btn btn-danger"  onclick="if (!confirm('Are you sure?')) { return false }">Delete</button>
+        </form>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-7">
+      {% if blog.img %}
+        <img src="{{blog.img}}" width="400px" height="300px">
+      {% endif %}
+      {% if blog.video %}
+        <video width="400px" height="300px" controls>
+          <source src="{{blog.video}}" type="video/mp4">
+        </video> 
+      {% endif %}
+    </div>
+    <div class="col-md-3"></div>
+  </div>
+
+   {% for commentinfo in comments %}
+    {% if commentinfo.blogid == blog.blogid %}
+    <div class="row">
+        <div class="col-md-1">
+          <a class="name"> <img class="comment" src="../static/images/p-d.jpg"></a>
+        </div>
+        <div class="col-md-10">
+          <div class="row">
+            <label>
+            {%for doctor in doctors%}{% if doctor.did == commentinfo.did %}{{doctor.dname}}{% endif %}{% endfor %}
+            {%for patient in patients%}{% if patient.pid == commentinfo.pid %}{{patient.pname}}{% endif %}{% endfor %}</label>
+          </div>
+          <div class="row">
+            <label>{{commentinfo.commentinfo}}</label>
+          </div>
+        </div>
+        <div class="col-md-1">
+          <form action="/admindeletecomment:{{commentinfo.commentid}}" method="post">
+        <button class="btn btn-danger"  onclick="if (!confirm('Are you sure?')) { return false }">Delete</button>
+        </form>
+      </div>
+      </div>
+      <br><br>
+      {% endif %}
+    {% endfor %}
+   <hr>
+   {% endif %}
+   {% if blog.did%}
+   <hr>
+   <div class="row" style="margin-left: 20px;">
+    <div class="col-md-11">
+      <h4>{%for doctor in doctors%}{% if doctor.did == blog.did %}{{doctor.dname}}{% endif %}{% endfor %}</h4>
+      <h4>{{blog.blogtitle}}</h4>
+      <h4>{{blog.blogdate}}</h4>
+      <p>{{blog.bloginfo}}</p>
+    </div>
+    <div class="col-md-1">
+       <form action="/admindeleteblog:{{blog.blogid}}" method="post">
+        <button class="btn btn-danger"  onclick="if (!confirm('Are you sure?')) { return false }">Delete</button>
+        </form>
+    </div>
+   </div>
+   {% for commentinfo in comments %}
+    {% if commentinfo.blogid == blog.blogid %}
+    <div class="row">
+        <div class="col-md-1">
+          <a class="name"> <img class="comment" src="../static/images/p-d.jpg"></a>
+        </div>
+        <div class="col-md-10">
+          <div class="row">
+            <label>
+            {%for patient in patients%}{% if patient.pid == commentinfo.pid %}{{patient.pname}}{% endif %}{% endfor %}
+            {%for doctor in doctors%}{% if doctor.did == commentinfo.did %}{{doctor.dname}}{% endif %}{% endfor %}</label>
+          </div>
+          <div class="row">
+            <label>{{commentinfo.commentinfo}}</label>
+          </div>
+        </div>
+        <div class="col-md-1">
+          <form action="/admindeletecomment:{{commentinfo.commentid}}" method="post">
+        <button class="btn btn-danger"  onclick="if (!confirm('Are you sure?')) { return false }">Delete</button>
+        </form>
+      </div>
+      </div>
+      <br><br>
+      {% endif %}
+    {% endfor %}
+   <hr>
+   {% endif %}
+   {% endfor %}
+   <!-- this will be change when coding back end -->
+<br></div>
+{% endblock %}

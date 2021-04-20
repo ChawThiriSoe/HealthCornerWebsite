@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="icon" type="image/png" href="static/images/HC3.png"/>
+  <title>Health Corner Website Management</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+<script type="text/javascript">
+$(".hover").mouseleave(
+  function () {
+    $(this).removeClass("hover");
+  }
+);
+</script>
+</head>
+
+<body>
+
+
+
+<div id="main">
+
+<nav class="navbar navbar-expand-md  navbar-dark" style="position: fixed;z-index: 1200;width: 100%;background-color: #0009;">
+
+ <a class="name" href="/adminhome"> <img src="../static/images/HC3.png"  width="90%" height="90%"></a>  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="main">
+     <li class="current">
+      <a class="nav-link" href="/admindoctors">Manage Doctors Info</a>
+    </li>
+    
+    <li>
+      <a class="nav-link" href="/adminmedicallist">Manage Medical Info</a>
+    </li>
+    
+    <li>
+      <a class="nav-link" href="/admindiseaselist">Manage Disease Info</a>
+    </li>
+    <li>
+      <a class="nav-link" href="/adminbloginfo">Manage Blog Info</a>
+    </li>
+    <li>
+      <a class="nav-link" href="/adminpatients">Manage Patient Info</a>
+    </li>
+    <li>
+      <a class="nav-link" href="/adminfeedbackinfo">Manage Feedback Info</a>
+    </li>
+ 
+ <li>
+      <a class="nav-link" href="/adminlist">Manage Admin Info</a>
+    </li>
+    
+  
+      <li class="main" style="padding-top: 10px;float: right;">
+      
+      <a class="nav-link" href="/logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+    </ul>
+    </div>
+    </nav>
+
+</div>
+
+<img src="..\static\images\healthcare1.jpg" style="width: 100%;max-height: 1000px">
+{% with messages = get_flashed_messages() %}
+
+      {% if messages %}
+          {% for msg in messages %}
+          <div style="width: 96%; padding-left: 15px;">
+            <div class="row">
+              <div class="col-md-2"></div>
+              <div class="col-md-8">
+                <input type="checkbox" id="one" class="hidden" name="ossm">  
+                <label for="one" class="alert-message">
+                  <strong style="color: #232324"> {{msg}} </strong>
+                  <span class="close">×</span>
+                </label>
+              </div>
+              <div class="col-md-2"></div>
+            </div>
+          </div>
+          {% endfor %}
+
+      {% endif %}
+
+
+{% endwith %}
+{% block content %}
+<div class="container-fluid"><br>
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-6"><h2>Medical Information List</h2></div>
+    <div class="col-md-2">
+      <a href="/admininsertmedicalinfo"><button class="adminview">Insert Medical Info</button></a> 
+    </div>
+    <div class="col-md-2">
+      <a href="/adminmedicallist"><button class="adminview">View Medical Info</button></a> 
+    </div>
+   </div>
+   <!-- this will be change when coding back end -->
+   {% for medicalinfo in mediinfo %}
+   <hr>
+   <div class="row" style="margin-left: 20px;">
+    <div class="col-md-12">
+        <h4><a href="/adminmedicalinfo/{{medicalinfo.medicaltitle}}:{{medicalinfo.medicalid}}" class="list">{{medicalinfo.medicaltitle}}</a></h4>
+    </div>
+   </div>
+   <hr>
+   {% endfor %}
+   <!-- this will be change when coding back end -->
+<br></div>
+{% endblock %}
+<div class="container-fluid" id="footer" style="background-color: #8E9AAF;">   
+    <center><h5>&copy;Copyright 2021||All rights reserved||Created by Health Corner</h5></center>
+</div>
+</body>
+</html>

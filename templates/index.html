@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="icon" type="image/png" href="static/images/HC1.png"/>
+  <title>Health Corner Website</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+<script type="text/javascript">
+$(".hover").mouseleave(
+  function () {
+    $(this).removeClass("hover");
+  }
+);
+</script>
+</head>
+
+<body>
+
+
+
+<div id="main">
+
+<nav class="navbar navbar-expand-md  navbar-dark" style="position: fixed;z-index: 1200;width: 100%;background-color: #0009;">
+
+ <a class="name" href="/"> <img src="../static/images/HC1.png" width="50%" height="50%"></a>  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="main">
+     <li class="current">
+      <a href="/">Home</a>
+    </li>
+    <li>
+      <a href="/doctor">Doctor</a>
+    </li>
+
+    <li>
+      <div class="dropdown">
+      <button class="dropbtn">Blog</button>
+      <div class="dropdown-content">
+        {% if session['login'] %}
+        <a href="/userviewblog:0">Blog Details</a>
+        {% endif %}
+        {% if not session['login'] %}
+        <a href="/userviewblog:0" disable style="font-size: 10px">BLog (need to login)</a>
+        {% endif %}
+        <a href="/medicallist:0">Medical Info</a>
+        <a href="/diseaselist:0">Diseases Info</a>
+      </div>
+    </div>
+    </li>
+
+    <li>
+      <a href="/contact">Contact Us</a>
+    </li>
+    <li>
+      <a href="/aboutus">About Us</a>
+    </li>
+    {% if session['login'] %}
+      <div class="dropdown" style="float: right;">
+        {% if session['user'] == "patient" %}
+        <img class="navpro" src="{{session['image']}}">
+        <div class="dropdown-content">
+            <a href="/patientprofile:{{session['pid']}}">Profile</a>
+            <a href="/logout">Log Out</a>
+        </div>
+        {% endif %}
+        {% if session['user'] == "doctor" %}
+        <img class="navpro" src="{{session['image']}}">
+        <div class="dropdown-content">
+            <a href="/doctorprofile:{{session['did']}}">Profile</a>
+            <a href="/logout">Log Out</a>
+        </div>
+        {% endif %}
+      </div>
+    {% endif %}
+    {% if not session['login'] %}
+    <li style="float: right">
+      <a href="/register" style="color: white">Register</a>
+    </li>
+    <li style="float: right">
+      <a href="/login" style="color: white">Login</a>
+    </li>
+    {% endif %}
+    </ul>
+
+  </div>  
+</nav>
+</div>
+
+<div class="container-fluidn">
+  <img src="..\static\images\healthcare.jpg" style="width: 100%;">
+</div>
+{% with messages = get_flashed_messages() %}
+
+      {% if messages %}
+          {% for msg in messages %}
+          <div style="width: 96%; padding-left: 15px;">
+            <div class="row">
+              <div class="col-md-2"></div>
+              <div class="col-md-8">
+                <input type="checkbox" id="one" class="hidden" name="ossm">  
+                <label for="one" class="alert-message">
+                  <strong style="color: #232324"> {{msg}} </strong>
+                  <span class="close">×</span>
+                </label>
+              </div>
+              <div class="col-md-2"></div>
+            </div>
+          </div>
+          {% endfor %}
+
+      {% endif %}
+
+
+{% endwith %}
+{% block content %}
+<div class="container" style="padding-top: 20px;">
+  <div class="content">
+    <div class="row">
+      <div class="col-md-6">
+        <img src="..\static\images\cancer.jpg" style="width: 100%">
+        </div>
+      <div class="col-md-5">
+        <h2 class="abouth3">About Health Corner</h2>
+        <p class="aboutp">
+         Health Corner is an online health care information sharing website. Our mission is to present high quality, relevant health and wellness information that is trusted and easy to understand anytime anywhere on any device – for free. Our aim is to provide the people with accurate and relevant medical information to help their own health and the health of the people they care. We hope to improve the public health on online through our website. 
+        </p>
+      </div>
+      <div class="col-md-1"></div>
+    </div><br><br>
+    <div class="row">
+      <div class="col-md-6">
+        <h2 class="abouth3">What you’ll find on Health Corner </h2>
+        <p class="aboutp">
+          We provide information about<br>
+            1. Diseases and conditions<br>
+            2. Treatments<br>
+            3. Symptoms<br>
+            4. Other medical knowledges<br>
+            5. Self-help guides for common illnesses and diseases
+        </p>
+      </div>
+      <div class="col-md-6">
+        <img src="..\static\images\national.jpg" style="width: 100%">
+      </div>
+    </div><br><br>
+    <div class="row">
+      <div class="col-md-6">
+        <img src="..\static\images\martha.jpg" style="width: 100%">
+        </div>
+      <div class="col-md-5">
+        <h2 class="abouth3">Our Service</h2>
+        <p class="aboutp">
+         Users can learn medical knowledges in our website. They can also share their knowledges. Patients can share their health status and can ask tips on how to treat for their condition or others. They can also search the specific specialist doctors for a particular disease. Doctors can share the medical knowledges and information about diseases. They can also answer to the patients for tips on how to treat through patients’ posts. 
+        </p>
+      </div>
+      <div class="col-md-1"></div>
+    </div>
+  </div>
+  <br>
+</div>
+{% endblock %}
+<div class="container-fluid" style="background-color: #5A9AD6;text-align: center;"><br>   
+    <div class="row">
+      <div class="col-md-3">
+        <h3>Services</h3>
+        <a href="/userviewblog:0" style="text-decoration: none; color: black;">Blog Details</a><br>
+        <a href="/medicallist:0" style="text-decoration: none; color: black;">Medical Info</a><br>
+        <a href="/diseaselist:0" style="text-decoration: none; color: black;">Diseases Info</a><br>
+      </div>
+      <div class="col-md-3">
+        <h3>Quick Links</h3>
+        <a href="/" style="text-decoration: none; color: black;">Home</a><br>
+        <a href="/doctor" style="text-decoration: none; color: black;">Doctor</a><br>
+        <a href="/contact" style="text-decoration: none; color: black;">Contact Us</a><br>
+        <a href="/aboutus" style="text-decoration: none; color: black;">About Us</a><br>
+        <a href="/termsandconds" style="text-decoration: none; color: black;">Terms and Conditions</a><br>
+        <a href="/policy" style="text-decoration: none; color: black;">Privacy and Policy</a><br>
+      </div>
+      <div class="col-md-3">
+        <h3>Have a question?</h3>
+        <h6>Email:<span style="color: white"> healthcornerwebsite@gmail.com</span></h6>
+        <a href="https://www.instragram.com" style="text-decoration: none;"><i style='font-size:24px;color: #232324' class='fab'>&#xf16d;</i></a><span style="padding: 5px"></span>
+        <a href="https://www.facebook.com" style="text-decoration: none;"><i style='font-size:24px;color: #232324' class='fab'>&#xf082;</i></a><span style="padding: 5px"></span>
+        <a href="https://www.twitter.com" style="text-decoration: none;"><i style='font-size:24px;color: #232324' class='fab'>&#xf081;</i></a><span style="padding: 5px"></span>
+        <a href="https://www.skype.com" style="text-decoration: none;"><i style='font-size:24px;color: #232324' class='fab'>&#xf17e;</i></a>
+
+      </div>
+      <div class="col-md-3">
+        <h3>NewsLetter</h3>
+        <!-- <input type="text" placeholder="Your Email Address" name="email" style="width: 80%"><button class="btn btn-primary">Send</button> -->
+        <div class="input-group"><input type="text" class="form-control" placeholder="Your Email Address" style="width: 80%;">
+        <div class="input-group-append"><button class="btn btn-primary" type="submit" style="margin-top: 5px;">Send</button></div>
+        </div>
+      </div>
+    </div><br>
+</div>
+<div class="container-fluid" id="footer" style="background-color: #8E9AAF;">   
+    <center><h5>&copy; Copyright 2021||All rights reserved||Created by Group-4 (ENU/IMU)</h5></center>
+</div>
+</body>
+</html>

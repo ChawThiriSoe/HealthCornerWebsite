@@ -1,0 +1,46 @@
+{% extends 'index.html' %}
+{% block content %}
+	<div class="container-fluid">
+		<div class="row">
+	    <div class="col-md-2"></div>
+	    <div class="col-md-6"><h2>User Upload Blog</h2></div>
+	    <div class="col-md-4"></div>
+	   </div>
+		<div class="row">
+			<div class="col-md-2"></div>
+		<div class="col-md-8">
+		<!-- Start of insert medi info form -->
+		<form action="/useruploadblog" method="post" enctype="multipart/form-data">
+    		<label for="post_title">Title: </label>
+    		<input class="insert" type="text" id="blog_title" name="blog_title" placeholder="Enter title here..." required>
+
+    		<label for="post_info">Your Information: </label>
+    		<textarea class="insert" id="blog_info" name="bloginfo" placeholder="Enter informaiton here..." style="height:200px" required></textarea>
+
+    		<input type="file" name="image" id="file1" style="display: none;">
+			<label for="file1" style="cursor: pointer; color: #232324;"><i class="fas fa-images" style="font-size:25px"></i>&nbsp;&nbsp;Images </label>
+
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+			<input type="file" name="video" id="file2" style="display: none;">
+			<label for="file2" style="cursor: pointer; color: #232324;"><i class="fas fa-video" style="font-size:25px"></i>&nbsp;&nbsp;Videos </label><br><br>
+
+    		<input class="insert" type="submit" value="UPLOAD" style="background-color: #D7E02A; color: #232324">
+    		<input class="insert" type="reset" value="CANCEL" style="background-color: #D7E02A; color: #232324">
+  		</form>
+		<!-- End of insert medi info form -->
+		</div>
+		<div class="col-md-2"></div>
+		</div>
+	</div><br>
+	<script>
+	var loadFile1 = function(event) {
+		var image = document.getElementById('output');
+		image.src = URL.createObjectURL(event.target.files[0]);
+	};
+	var loadFile2 = function(event) {
+		var video = document.getElementById('output');
+		video.src = URL.createObjectURL(event.target.files[0]);
+	};
+	</script>
+{% endblock %}

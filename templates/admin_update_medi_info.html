@@ -1,0 +1,33 @@
+{% extends 'adminmedicallist.html' %}
+{% block content %}
+<div class="container-fluid"><br>
+		<div class="row">
+			<div  class="col-md-2"></div>
+		    <div class="col-md-6"><h3>Update Medical Information</h3></div>
+		    <div class="col-md-2">
+		      <a href="/admininsertmedicalinfo"><button class="adminview">Insert Medical Info</button></a> 
+		    </div>
+		    <div class="col-md-2">
+		      <a href="/adminmedicallist"><button class="adminview">View Medical Info</button></a> 
+		    </div>
+	   </div>
+		<div class="row">
+			<div class="col-md-2"></div>
+			<div class="col-md-8">
+			<!-- Start of insert medi info form -->
+			<form action="/adminupdatemedicalinfo:{{mid}}" method="post">
+	    		<label for="medi_title">Title: </label>
+	    		<input class="insert" type="text" id="medi_title" name="medi_title" value="{{mediinfo.medicaltitle}}">
+
+	    		<label for="medi_info">Medical Information: </label>
+	    		<textarea class="insert" id="medi_info" name="medi_info" placeholder="{{mediinfo.medicalinfo}}" style="height:200px">{{mediinfo.medicalinfo}}</textarea>
+	    		<input type="hidden" name="hmifo" value="{{mediinfo.medicalinfo}}">
+	    		<input class="insert" type="submit" value="DONE" style="background-color: #D7E02A; color: #232324">
+	    		<input class="insert" type="reset" value="CANCEL" style="background-color: #D7E02A; color: #232324">
+	  		</form>
+			<!-- End of insert medi info form -->
+			</div>
+			<div class="col-md-2"></div>
+		</div>
+	</div><br>
+{% endblock %}

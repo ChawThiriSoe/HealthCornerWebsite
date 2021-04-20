@@ -1,0 +1,14 @@
+{% extends 'index.html' %}
+{% block content %}
+<div class="container-fluid"><br>
+	<a href="/medicallist:0"><button class="adminview">Back</button></a>
+   <hr>
+   <div class="row" style="margin-left: 20px;">
+    <div class="col-md-12">
+      <h3><span style="color: #F64857">{{title}}</span></h3>
+    <p>{{mediinfo.medicalinfo}}</p>
+    </div>
+   </div>
+   <hr>
+<br></div>
+{% endblock %}

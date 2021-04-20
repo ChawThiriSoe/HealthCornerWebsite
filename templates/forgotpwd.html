@@ -1,0 +1,34 @@
+{%   extends 'index.html' %}
+{% block content %}
+<div class="container" ><br>
+  <div class="row">
+   <div class="col-md-4"></div>
+   <div class="col-md-4">
+     <div class="login-box">
+
+  <h1 class="text1">Reset Password</h1>
+  <form action="/forgotpwd" method="post">
+  {% if not f %}
+  <div class="textbox">
+    <i class="fa fa-user" aria-hidden="true"></i>
+    <input type="text" placeholder="Enter Email" name="email">
+  </div>
+    <input name="submit" class="logreg" type="submit" value="Verify">
+  {% endif %}
+  {% if f %}
+  <div class="textbox">
+    <i class="fa fa-lock" aria-hidden="true"></i>
+    <input type="password" placeholder="New Passwords" name="pw">
+    <i class="fa fa-lock" aria-hidden="true"></i>
+    <input type="password" placeholder="Confrim New Passwords" name="cpw">
+    <input type="hidden" name="hemail" value="{{email}}">
+  </div>
+    <input name="submit" class="logreg" type="submit" value="Reset">
+  {% endif %}
+  </form><br>
+</div>
+   </div>
+   <div class="col-md-4"></div>
+   </div><br>
+</div>
+{% endblock %}

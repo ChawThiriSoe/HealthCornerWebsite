@@ -1,0 +1,26 @@
+{% extends 'adminmedicallist.html' %}
+{% block content %}
+<div class="container-fluid"><br>
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-6"><h2>Disease Information List</h2></div>
+    <div class="col-md-2">
+      <a href="/admininsertdiseaseinfo"><button class="adminview">Insert Disease Info</button></a> 
+    </div>
+    <div class="col-md-2">
+      <a href="/admindiseaselist"><button class="adminview">View Disease Info</button></a> 
+    </div>
+   </div>
+   <!-- this will be change when coding back end -->
+   {% for diseaseinfo in disinfo %}
+   <hr>
+   <div class="row" style="margin-left: 20px;">
+    <div class="col-md-12">
+      <h4><a href="/admindiseaseinfo/{{diseaseinfo.disname}}:{{diseaseinfo.disid}}" class="list">{{diseaseinfo.disname}}</a></h4>
+    </div>
+   </div>
+   <hr>
+   {% endfor %}
+   <!-- this will be change when coding back end -->
+<br></div>
+{% endblock %}

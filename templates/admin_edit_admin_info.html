@@ -1,0 +1,43 @@
+{% extends 'adminmedicallist.html' %}
+{% block content %}
+	<br>
+	<div class="container-fluid">
+		<div class="row">
+		<div class="col-md-8"></div>
+		<div class="col-md-2">
+			<a href="insertadmininfo"><button class="adminview">Insert Admin Info</button></a> 
+		</div>
+		<div class="col-md-2">
+			<a href="/adminlist"><button class="adminview">View Admin Info</button></a> 
+		</div>
+		</div>
+		<div class="row">
+			<div class="col-md-3"></div>
+			<div class="col-md-7">
+				<h2 style="color: #F64857">Edit Admin Information</h2>
+			</div>
+			<div class="col-md-2"></div>
+		</div>
+		<div class="row">
+			<div class="col-md-4"></div>
+			<div class="col-md-4">
+			<!-- Start of insert admin info form -->
+			<form action="/adminupdate:{{admin.aid}}" method="POST">
+	    		<label for="adminname">Admin Name:  </label>
+	    		<input class="insert" type="text" id="adminname" name="aname" value="{{admin.aname}}">
+
+	    		<label for="adminphone">Admin Phone:  </label>
+	    		<input class="insert" type="text" id="adminphone" name="aphone" value="{{admin.aphone}}">
+
+	    		<label for="adminemail">Admin Email:  </label>
+	    		<input class="insert" type="email" id="adminemail" name="aemail" value="{{admin.aemail}}">
+
+	    		<input class="insert" type="submit" value="DONE" name="done">
+	    		<input class="insert" type="reset" value="CANCEL">
+	  		</form>
+			<!-- End of insert admin info form -->
+			</div>
+			<div class="col-md-4"></div>
+		</div>
+	</div><br>
+{% endblock %}

@@ -1,0 +1,114 @@
+{% extends 'index.html' %}
+{% block content %}
+<div class="container-fluid"><br>
+		<div class="tab-content" id="myTabContent">
+			<form action="/doctor" method="post">
+              	<div class="row" style="background-color: none;">
+              	 <div class="col-md-2 paddingRightClear">
+                  <span class="fa fa-user-md Icon"></span>
+                  <input type="text" class="form-control searchInput" aria-label="Large" placeholder="Doctor name" name="docname">
+                </div>
+                <div class="col-md-3 paddingRightClear">
+                  <span class="fa fa-book Icon"></span>
+                  <input type="text" class="form-control searchInput bookInput" aria-label="Large" placeholder="Speciality" name="speciality">
+                </div>
+
+                 <div class="col-md-3 paddingRightClear">
+                  <span class="fa fa-hospital-o Icon"></span>
+                  <input type="text" class="form-control searchInput" aria-label="Large" placeholder="Enter Hospital Name" name="hosname">
+                </div>
+				<div class="col-md-2 filter">
+					<select class="filter-gender" name="gender">
+					  <option value="">Select Gender</option>
+					  <option value="Male">Male</option>
+					  <option value="Female">Female</option>
+					  <option value="Other">Other</option>
+					</select>
+				</div>
+					
+                <div class="col-md-2">
+                  <button type="submit" class="btn btn-search btn-lg btn-block"> Search </button>
+                </div>
+
+              </div>
+          </form>
+
+      </div>
+
+		<div class="row">
+			<div class="col-md-4"></div>
+			<div class="col-md-4"><center><h2>Doctor Information</h2></center></div>
+			<div class="col-md-4"></div>
+		</div><br>
+
+		{% if doctor %}
+		{% for doctors in doctor %}
+		<hr>
+		<div class="row">
+			<div class="col-md-2"></div>
+			<div class="col-md-3">
+			<img src="{{doctors.dimg}}" style="width: 100%; height: 300px; border-radius: 10px;">
+			</div>
+			<div class="col-md-4" class="info">
+			<h3>{{doctors.dname}}</h3>
+			<p>{{doctors.dgender}}</p>
+			<p>{{doctors.dphone}}</p>
+			<p>{{doctors.demail}}</p>
+			<p>{{doctors.daddr}}</p>
+			<p>{{doctors.hospitalname}}</p>
+			<p>{{doctors.speciality}}</p>
+			</div>
+			<div class="col-md-3"></div>
+		</div><hr><br>
+		{% endfor %}
+	    {% endif %}
+
+	    {% if matchdocinfo %}
+	    {% for docinfo in matchdocinfo %}
+	    {% for data in docinfo %}
+	    <hr>
+		<div class="row">
+			<div class="col-md-2"></div>
+			<div class="col-md-3">
+			<img src="{{data[6]}}" style="width: 100%; height: 300px; border-radius: 10px;">
+			</div>
+			<div class="col-md-4" class="info">
+			<h3>{{data[1]}}</h3>
+			<p>{{data[8]}}</p>
+			<p>{{data[3]}}</p>
+			<p>{{data[4]}}</p>
+			<p>{{data[2]}}</p>
+			<p>{{data[7]}}</p>
+			<p>{{data[9]}}</p>
+			</div>
+			<div class="col-md-3"></div>
+		</div><hr><br>
+	    {% endfor %}
+	    {% endfor %}
+	    {% endif %}
+	</div><br>
+	<script>
+  
+
+     $(document).ready(function(){
+     $('.dropdown-toggle').dropdown()
+    });
+
+
+
+
+$( ".filter-btn" ).click(function() {
+  var type = $( ".filter-type option:selected" ).val();
+  var brand = $( ".filter-brand option:selected" ).val();
+  
+
+if ($('.filter').hasClass(brand) && $('.filter').hasClass(type)) { 
+  $('.' + brand + '' + '.' + type).show();
+} else {
+  $('.' + brand + '' + '.' + type).hide();
+}
+
+  
+});
+</script>
+{% endblock %}

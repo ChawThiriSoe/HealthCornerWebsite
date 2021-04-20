@@ -1,0 +1,83 @@
+{%   extends 'index.html' %}
+{% block content %}
+<div class="container"><br>
+  <div class="row">
+   <div class="col-md-6">
+     <div class="wrap">
+      <h3 class="text1" style="color: black;"><center>Sign up for Patient</center></h3>
+      <form action="/register" method="post">
+        {% if n == True %}<input type="text" name="pname" value="{{pname}}" required>{% endif %}
+        {% if not n == True %}<input type="text" name="pname" placeholder="Enter Name" required>{% endif %}
+        <div class="form-check form-check-inline">
+
+      <input class="form-check-input" type="radio" name="pgender" id="inlineRadio1" value="Male" required>
+      <label class="form-check-label" for="inlineRadio1" style="color: black;">Male</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="pgender" id="inlineRadio2" value="Female">
+      <label class="form-check-label" for="inlineRadio2" style="color: black;">Female</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="pgender" id="inlineRadio2" value="Other">
+      <label class="form-check-label" for="inlineRadio2" style="color: black;">Other</label>
+    </div>
+        {% if n == True %}<input type="email" name="pemail" value="{{pemail}}" required>{% endif %}
+        {% if not n == True %}<input type="email" name="pemail" placeholder="Enter Email" required>{% endif %}
+        {% if n == True %}<input type="text" name="pphone" value="{{pphone}}" required>{% endif %}
+        {% if not n == True %}<input type="text" name="pphone" placeholder="Enter Phone" required>{% endif %}
+        {% if n == True %}<input type="text" name="paddr" value="{{paddr}}" required>{% endif %}
+        {% if not n == True %}<input type="text" name="paddr" placeholder="Enter Address" required>{% endif %}
+
+        <input type="password" name="ppwd" placeholder="Password must be at least 8words with 1 uppercase, 1 digit, 1 special(eg.!@#$%)" required>
+        <input type="password" name="pcpwd" placeholder="Comfrim Password..." required>
+        <input type="submit" class="logreg" name="patientreg" value="Sign up"><input type="hidden" name="register" value="patientreg">
+      </form>
+    </div>
+   </div>
+   <div class="col-md-6">
+     <div class="wrap">
+      <h3 class="text1" style="color: black;"><center>Sign up for Doctor</center></h3>
+      <form action="/register" method="post">
+        {% if d == True %}<input type="text" name="dname" value="{{dname}}" required>{% endif %}
+        {% if not d == True %}<input type="text" name="dname" placeholder="Enter Name" required>{% endif %}
+        <div class="form-check form-check-inline">
+
+      <input class="form-check-input" type="radio" name="dgender" id="inlineRadio1" value="Male" required>
+      <label class="form-check-label" for="inlineRadio1" style="color: black;">Male</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="dgender" id="inlineRadio2" value="Female">
+      <label class="form-check-label" for="inlineRadio2" style="color: black;">Female</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="dgender" id="inlineRadio2" value="Other">
+      <label class="form-check-label" for="inlineRadio2" style="color: black;">Other</label>
+    </div>
+        {% if d == True %}<input type="email" name="demail" value="{{demail}}" required>{% endif %}
+        {% if not d == True %}<input type="email" name="demail" placeholder="Enter Email" required>{% endif %}
+        {% if d == True %}<input type="text" name="dphone" value="{{dphone}}" required>{% endif %}
+        {% if not d == True %}<input type="text" name="dphone" placeholder="Enter Phone" required>{% endif %}
+        {% if d == True %}<input type="text" name="daddr" value="{{daddr}}" required>{% endif %}
+        {% if not d == True %}<input type="text" name="daddr" placeholder="Enter Address" required>{% endif %}
+        {% if d == True %}<input type="text" name="specialist" value="{{specialist}}" required>{% endif %}
+        {% if not d == True %}<input type="text" name="specialist" placeholder="Enter Your Specialist" required>{% endif %}
+        {% if d == True %}<input type="text" name="hospitalname" value="{{hospitalname}}" required>{% endif %}
+        {% if not d == True %}<input type="text" name="hospitalname" placeholder="Enter Hospital Name" required>{% endif %}
+        <input type="password" name="dpwd" placeholder="Password must be at least 8words with 1 uppercase, 1 digit, 1 special(eg.!@#$%)" required>
+        <input type="password" name="dcpwd" placeholder="Comfrim Password..." required>
+        <input type="submit" class="logreg" name="doctorreg" value="Sign up"><input type="hidden" name="register" value="doctorreg">
+      </form>
+    </div>
+   </div>
+   
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-md-5"></div>
+    <div class="col-md-3">
+      <a href="/login" style="text-decoration: none;color: red; font-size: 17px;">Already have an account? ==> </a>
+    </div>
+    <div class="col-md-4"></div>
+  </div><br>
+</div>
+{% endblock %}

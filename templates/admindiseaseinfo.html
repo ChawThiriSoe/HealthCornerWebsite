@@ -1,0 +1,42 @@
+{% extends 'adminmedicallist.html' %}
+{% block content %}
+<div class="container-fluid"><br>
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-6"></div>
+    <div class="col-md-2">
+      <a href="/admininsertdiseaseinfo"><button class="adminview">Insert Disease Info</button></a> 
+    </div>
+    <div class="col-md-2">
+      <a href="/admindiseaselist"><button class="adminview">View Disease Info</button></a> 
+    </div>
+   </div>
+   <!-- this will be change when coding back end -->
+
+   <hr>
+   <div class="row" style="margin-left: 20px;">
+    <div class="col-md-12">
+      <h3><span style="color: #F64857">{{name}}</span></h3>
+      <h4>Description</h4>
+      <p>{{disinfo.disdescription}}</p>
+      <h4>Symptoms</h4>
+      <p>{{disinfo.dissymptoms}}</p>
+      <h4>Treatment</h4>
+      <p>{{disinfo.treatment}}</p>  
+    </div>
+   </div>
+   <div class="row">
+   <div class="col-md-8"></div>
+    <div class="col-md-2">
+       <button class="btn btn-primary" style="margin-left: 150px;"><a href="/adminupdatediseaseinfo:{{did}}" style="text-decoration: none;color: white;">Edit</a></button>
+    </div>
+    <div class="col-md-2">
+       <form action="/admindiseasedel:{{did}}" method="post">
+        <button class="btn btn-danger"  onclick="if (!confirm('Are you sure?')) { return false }">Delete</button>
+    </form>
+    </div>
+   </div>
+   <hr>
+   <!-- this will be change when coding back end -->
+<br></div>
+{% endblock %}

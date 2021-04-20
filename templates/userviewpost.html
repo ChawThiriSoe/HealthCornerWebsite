@@ -1,0 +1,142 @@
+{% extends 'index.html' %}
+{% block content %}
+<!-- start of container -->
+<div class="container-fluid"><br>
+   <!-- this will be change when coding back end -->
+   <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8"></div>
+    <div class="col-md-2">
+      <a href="/useruploadblog"><button class="adminview">Post a Blog</button></a> 
+    </div>
+   </div>
+   {% for bloginfo in blogs %}
+   <hr>
+   <div class="row" style="margin-left: 20px;">
+    <div class="col-md-1">
+    {%for doctor in doctor%}{% if doctor.did == bloginfo.did %}<img class="comment" src="{{doctor.dimg}}">{% endif %}{% endfor %}
+    {%for patient in patient%}{% if patient.pid == bloginfo.pid %}<img class="comment" src="{{patient.pimg}}">{% endif %}{% endfor %}
+    </div>
+    <div class="col-md-11">
+    <div class="row">
+      {%for doctor in doctor%}{% if doctor.did == bloginfo.did %}<h4>{{doctor.dname}}</h4>{% endif %}{% endfor %}
+      {%for patient in patient%}{% if patient.pid == bloginfo.pid %}<h4>{{patient.pname}}</h4>{% endif %}{% endfor %}
+    </div>
+    <div class="row">
+      {{bloginfo.blogdate}}
+    </div>
+    </div>
+   </div><br>
+   <div class="row" style="margin-left: 20px;">
+    <div class="col-md-12">
+    {% if bloginfo.pid == pid %}
+      <button class="btn btn-primary" style="float: right;margin-right: 20px;"><a href="/usereditblog:{{bloginfo.blogid}}" style="text-decoration: none;color: white;">Edit</a></button>
+    {% endif %}
+    {% if bloginfo.did == did %}
+      <button class="btn btn-primary" style="float: right;margin-right: 20px;"><a href="/usereditblog:{{bloginfo.blogid}}" style="text-decoration: none;color: white;">Edit</a></button>
+    {% endif %}
+    <h4>{{bloginfo.blogtitle}}</h4>
+    <p>{{bloginfo.bloginfo}}</p>
+    </div>
+    </div>
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-7">
+      {% if bloginfo.img %}
+        <img src="{{bloginfo.img}}" width="400px" height="300px">
+      {% endif %}
+      {% if bloginfo.video %}
+        <video width="400px" height="300px" controls>
+          <source src="{{bloginfo.video}}" type="video/mp4">
+        </video> 
+      {% endif %}
+    </div>
+    <div class="col-md-2"></div>
+  </div>
+
+
+<div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-1">
+          <form action="/like:{{bloginfo.blogid}}" method="post" style="">
+            <input type="hidden" name="chapterid" value="">
+            <button class="likebutton">
+              <i class="fa fa-thumbs-up" style="font-size:26px; color: #D91848;"></i>
+            </button>
+            <font style="font-size: 20px; color: #6E6565;">
+              {{bloginfo.bloglike}}
+            </font>
+          </form>
+        </div>
+        <div class="col-md-1">
+          <form action="/unlike:{{bloginfo.blogid}}" method="post">
+            <input type="hidden" name="chapterid" value="">
+            <button class="likebutton">
+              <i class="fa fa-thumbs-down" style="font-size:26px; color: #D91848;"></i>
+            </button>
+            <font style="font-size: 20px; color: #6E6565;">
+              {{bloginfo.blogunlike}}
+            </font>
+          </form>
+        </div>
+        <div class="col-md-9"></div>
+  </div><br>
+
+
+  <div class="comment-section">
+    {% for commentinfo in comments %}
+    {% if commentinfo.blogid == bloginfo.blogid %}
+    <div class="row">
+        <div class="col-md-1">
+          <a class="name"> 
+          {%for doctor in doctor%}{% if doctor.did == commentinfo.did %}<img class="comment" src="{{doctor.dimg}}">{% endif %}{% endfor %}
+          {%for patient in patient%}{% if patient.pid == commentinfo.pid %}<img class="comment" src="{{patient.pimg}}">{% endif %}{% endfor %}
+          </a>
+        </div>
+        <div class="col-md-11">
+          <div class="row">
+            <label>
+            {%for doctor in doctor%}{% if doctor.did == commentinfo.did %}{{doctor.dname}}{% endif %}{% endfor %}
+            {%for patient in patient%}{% if patient.pid == commentinfo.pid %}{{patient.pname}}{% endif %}{% endfor %}</label>
+          </div>
+          <div class="row">
+            <label>{{commentinfo.commentinfo}}</label>
+          </div>
+        </div>
+      </div><br><br>
+      {% endif %}
+      {% endfor %}
+      
+
+      <form action="/usercomment:{{bloginfo.blogid}}" method="POST">
+      <div class="row">
+            <div class="col-md-1">
+              <label  style="margin-left: 30px;">Comment: </label>
+            </div>
+            <div class="col-md-8">
+              <textarea id="newcomment" name="commentinfo" placeholder="Write a comment..." style="margin-left: 50px; width: 90%;"></textarea>
+            </div>
+            <div class="col-md-3">
+              <button class="likebutton">
+              <i class="glyphicon glyphicon-send" style="font-size:26px; color: #D91848 ; padding-top: 15px;"></i>
+            </button>           
+            </div>
+      </div>
+      </form>
+
+  </div>
+  <hr>
+  {% endfor %}
+  <center>
+   <ul class="pagination pagination">
+    {% if page == 1 %}
+    {% for p in range(page+1) %}<li><a href="/userviewblog:{{p}}">{{p+1}}</a></li>{% endfor %}
+    {% endif %}
+    {% if not page == 1 %}
+    {% for p in range(page) %}<li><a href="/userviewblog:{{p}}">{{p+1}}</a></li>{% endfor %}
+    {% endif %}
+    </ul></center>
+</div>
+<!-- End of container -->
+<br>
+{% endblock %}

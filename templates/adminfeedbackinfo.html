@@ -1,0 +1,66 @@
+{% extends 'adminmedicallist.html' %}
+{% block content %}
+<div class="container-fluid"><br>
+   <div class="row">
+    <div class="col-md-2"></div>
+      <div class="col-md-6"><h2>Manage Feedback Info</h2></div>
+    <div class="col-md-4"></div>
+    </div>
+   <!-- this will be change when coding back end -->
+   {%for feedback in feedback_database%}
+   {% if feedback.pid%}
+   <hr>
+   <div class="row" style="margin-left: 20px;">
+    <div class="col-md-11">
+      <h4>{%for patient in patients%}
+          {% if patient.pid == feedback.pid %}
+          {{patient.pname}}
+          {% endif %}
+          {% endfor %}</h4>
+      <p>{{feedback.fbmsg}}</p>
+    </div>
+    <div class="col-md-1">
+      <form action="/feedbackdel:{{feedback.fbid}}" method="post">
+        <button class="btn btn-danger"  onclick="if (!confirm('Are you sure?')) { return false }">Delete
+        </button>
+      </form>
+      <br>
+      {% if not feedback.fbcheck == 'checked' %}
+      <form action="/feedbackcheck:{{feedback.fbid}}">
+        <input type="submit" class="btn btn-primary" name="check" value="Check">
+      </form>
+      {% endif %}
+    </div>
+   </div>
+   <hr>
+   {% endif %}
+   {% if feedback.did%}
+   <hr>
+   <div class="row" style="margin-left: 20px;">
+    <div class="col-md-11">
+      <h4>{%for doctor in doctors%}
+          {% if doctor.did == feedback.did %}
+          {{doctor.dname}}
+          {% endif %}
+          {% endfor %}</h4>
+      <p>{{feedback.fbmsg}}</p>
+    </div>
+    <div class="col-md-1">
+      <form action="/feedbackdel:{{feedback.fbid}}" method="post">
+        <button class="btn btn-danger"  onclick="if (!confirm('Are you sure?')) { return false }">Delete</button>
+      </form>
+      <br>
+      {% if not feedback.fbcheck == 'checked' %}
+      <form action="/feedbackcheck:{{feedback.fbid}}">
+        <input type="submit" class="btn btn-primary" name="check" value="Check">
+      </form>
+      {% endif %}
+    </div>
+   </div>
+
+   <hr>
+   {% endif %}
+   {% endfor %}
+   <!-- this will be change when coding back end -->
+<br></div>
+{% endblock %}

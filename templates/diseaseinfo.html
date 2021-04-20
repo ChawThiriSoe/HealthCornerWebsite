@@ -1,0 +1,21 @@
+{% extends 'index.html' %}
+{% block content %}
+<div class="container-fluid"><br>
+   <!-- this will be change when coding back end -->
+   <a href="/diseaselist:0"><button class="adminview">Back</button></a>
+   <hr>
+   <div class="row" style="margin-left: 20px;">
+    <div class="col-md-12">
+      <h3><span style="color: #F64857">{{name}}</span></h3>
+      <h4>Description</h4>
+      <p>{{disinfo.disdescription}}</p>
+      <h4>Symptoms</h4>
+      <p>{{disinfo.dissymptoms}}</p>
+      <h4>Treatment</h4>
+      <p>{{disinfo.treatment}}</p>  
+    </div>
+   </div>
+   <hr>
+   <!-- this will be change when coding back end -->
+<br></div>
+{% endblock %}

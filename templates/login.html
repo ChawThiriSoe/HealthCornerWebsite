@@ -1,0 +1,31 @@
+{%   extends 'index.html' %}
+{% block content %}
+<div class="container" ><br>
+  <div class="row">
+   <div class="col-md-4"></div>
+   <div class="col-md-4">
+     <div class="login-box">
+
+        <h1 class="text1">User Login</h1>
+        <form action="/login" method="post">
+        <div class="textbox">
+          <i class="fa fa-user" aria-hidden="true"></i>
+          <input type="email" placeholder="Email" name="email">
+          
+        </div>
+
+        <div class="textbox">
+          <i class="fa fa-lock" aria-hidden="true"></i>
+          <input type="password" placeholder="Passwords" name="pw">
+        </div>
+          <a href="/forgotpwd" style="text-decoration: none;color: red;">Forgot Password?</a>
+          <a href="/register" style="text-decoration: none;color: red;float: right;">Create An Account</a>
+          <input name="submit" class="logreg" type="submit" value="Login">
+
+        </form><br>
+      </div>
+   </div>
+   <div class="col-md-4"></div>
+   </div><br>
+</div>
+{% endblock %}
